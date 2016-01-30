@@ -7,3 +7,5 @@
 
 忘了说了本人CIC会长
 
+文件说明：如果没意外就那么一个文件，function慢慢加
+          2016.1.30：增加changePW、curl_POST
