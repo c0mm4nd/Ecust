@@ -1,7 +1,17 @@
 <?php
 date_default_timezone_get("Asia/Chongqing");
-$EcustID = $_GET['id'];
-$EcustPW = $_GET['pw'];
+$EcustID = "";//填入学号
+$EcustPW = "";//填入密码（jwc的）
+
+if ($EcustID = "" && $EcustPW = "") {
+	$EcustID = $_GET['id'];
+	$EcustPW = $_GET['pw'];
+}
+
+// $EcustID = "10142045";
+// $EcustPW = '10142045';
+// 没错本人学号&密码
+// $function_num = $_GET['func'];
 
 class loginEcust{
 	public $curlobj;
@@ -97,6 +107,54 @@ class loginEcust{
 			$url = "http://202.120.108.14/ecustedu/E_SelectCourse/ScInFormation/syllabusHistory.aspx";
 			$opt = $this->curl_POST($url,$data);
 			//通过正则截取数据（官网太丑= =
-			echo $opt;
+			//echo $opt;
+			$part_1_Array = explode("<tr class=\"headcenter\" bgcolor=\"#6699FF\">" , $opt);
+			//echo $part_1_Array[0]."cut here";
+			//echo $part_1_Array[1];
+			$part_2_Array = explode("</table></td>", $part_1_Array[1]);
+			//var_dump($part_2_Array);
+			$table = str_replace(" class=\"griditem\" onmouseout=\"javascript:this.style.backgroundColor='#dedfde';\" onmouseover=\"javascript:this.style.backgroundColor='#fff7ce';cursor='hand';\"", "", $part_2_Array[0]);
+			$table = str_replace(" class=\"gridalteritem\" onmouseout=\"javascript:this.style.backgroundColor='#ffffff';\" onmouseover=\"javascript:this.style.backgroundColor='#fff7ce';cursor='hand';\"" , "" , $table);
+			$table = str_replace("</tr><tr>","",$table);
+			$table = str_replace("</tr>", "", $table);
+			$table = str_replace("</td>","<td>" ,$table);
+			$table = str_replace("td width=\"30\"","td" ,$table);
+			$table = str_replace("\n" ,"" ,$table);
+			$table = str_replace("\t", "" ,$table);
+			$table = str_replace(" ", "" ,$table);
+			$table = str_replace("<td>","td",$table);
+			$table = str_replace("tdtd","td",$table);
+
+			//echo $table;
+
+			$Array = explode("td" ,$table);
+			//print_r(array_filter($Array));
+			/**
+			 *	$Array结果介绍：
+			 *	首先
+			 *	0 => ""
+			 *	1 => "课程名"
+			 *	2 => "教师"
+			 *  3 => "开课系"
+			 *  4 => "学分"
+			 *  5 => "课程性质"
+			 *  其次
+			 *  每个序号mod 6 所得值对应上面的内容
+			 * 
+			 */
+			var_dump($Array);
+	}
+	public function KaoShiBiao(){
+		/**
+		 * 
+		 */
 	}
 }
+
+$test = new loginEcust($EcustID,$EcustPW);
+
+
+
+//$test->XuanKeXinXi(2014,1);
+
+//$tset->changePW('woshishabi');
