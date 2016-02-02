@@ -15,6 +15,7 @@
 
           2016.1.30：增加changePW、curl_POST
           2016.1.31：修正curl的错误，增加选课信息查询XuanKeXinXi
+          2016.2.2：改动：完善了XuanKeXinXi，开始准备接口部署，确认下一步目标为考试表
           
 ##接口使用：
           接口还没写orz
