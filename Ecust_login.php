@@ -121,9 +121,6 @@ class Ecust{
 		//curl_close($this->curlobj);
 	}
 
-	public function curl_GET($url,$data){
-		//没用到Get先不写
-	}
 
 	public function changePW($newPW){
 		$data = "__VIEWSTATE=%2FwEPDwUKMTYzMjI1NzMyN2Rk6a%2BHx5mRWLuy0dJqc2wHB2274JE%3D&txtNewPwd1=".$newPW."&txtNewPwd2=".$newPW."&BtnOK=%E6%8F%90%E4%BA%A4&__EVENTVALIDATION=%2FwEWBAKll4qhCgL7mJ6BBAL7mJqBBAL9mpmPAVpXeLI7SJ4Gqk%2BqA%2BCwBw1nWJFC";
@@ -204,6 +201,8 @@ class Ecust{
 
 $test = new Ecust($EcustID,$EcustPW);
 
+
+var_dump($test);
 //$test->KaoShiBiao(2015,1);
 
 //$test->XuanKeXinXi(2014,1);
