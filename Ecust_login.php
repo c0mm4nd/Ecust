@@ -32,7 +32,7 @@ class Ecust{
 	//public $success = false;
 	public function __construct($EcustID,$EcustPW){
 		// 发送Post并获取Cookie：Start
-		$data="__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKLTU1MjMxMzE0NA9kFgICAQ9kFgICBg8PFgIeBFRleHQFYOavm%2BiwpuaYguWQjOWtpu%2B8jOaCqOWlve%2B8geaCqOWujOaIkOacrOWtpuacn%2BeahOaVmeWtpua1i%2BivhO%2B8jOaJjeiDveeci%2BWIsOacrOWtpuacn%2BeahOaIkOe7qeOAgmRkZF%2FuvXV8GM900SI%2B8zKgZKNfA%2FTH&TxtStudentId=".$EcustID."&TxtPassword=".$EcustPW."&BtnLogin=%E7%99%BB%E5%BD%95&__EVENTVALIDATION=%2FwEWBAKog665AQK%2Fycb4AQLVqbaRCwLi44eGDLF4ZYE%2FPlBcalTxIVf0yprdM0lE";
+		$data="__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUJMTg2MzE1NTYyD2QWAgIBD2QWAgIGDw8WAh4EVGV4dAVQ5a2m55Sf5Yid5aeL5a%2BG56CB5Li66Lqr5Lu96K%2BB5Y%2B35ZCO5YWt5L2N44CC5a%2BG56CB6ZW%2F5bqm5LiN6LaF6L%2BHMTDkuKrlrZfnrKbjgIJkZGTItFe6UDnNqdE2sz592HXKwZ7Fhw%3D%3D&TxtStudentId=".$EcustID."&TxtPassword=".$EcustPW."&BtnLogin=%E7%99%BB%E5%BD%95&__EVENTVALIDATION=%2FwEWBALplYnsCgK%2Fycb4AQLVqbaRCwLi44eGDNL1%2FUVfta6zTJ9DMRXMNe6Ao6Wm";
 		$this->curlobj = curl_init();
 		curl_setopt($this->curlobj,CURLOPT_URL, 'http://202.120.108.14/ecustedu/K_StudentQuery/K_StudentQueryLogin.aspx');
 		curl_setopt($this->curlobj, CURLOPT_RETURNTRANSFER, true);
