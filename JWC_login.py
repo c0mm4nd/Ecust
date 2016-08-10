@@ -1,7 +1,7 @@
 # coding:utf8
 import requests
 import mechanize
-# import lxml
+from lxml import etree
 import cookielib
 
 # stuID = 10142045
@@ -19,8 +19,21 @@ def Login(stuID, stuPW):
 	pass
 
 def primaryMethod(stuID, stuPW):
+	get_url = "http://202.120.108.14/ecustedu/K_StudentQuery/K_StudentQueryLogin.aspx"
+	get = requests.get(get_url)
+	root = etree.HTML(get.text)
+	viewstate_tag = root.xpath("//*[@id='__VIEWSTATE']")
+	viewstate = viewstate_tag[0].attrib['value']
+	eventvalidation_tag = root.xpath("//*[@id='__EVENTVALIDATION']")
+	eventvalidation = eventvalidation_tag[0].attrib['value']
+
 	url_ggcx_login = "http://202.120.108.14/ecustedu/K_StudentQuery/K_StudentQueryLogin.aspx"
-	payload = {'TxtStudentId': stuID, 'TxtPassword': stuPW, '__EVENTVALIDATION': '/wEWBALplYnsCgK/ycb4AQLVqbaRCwLi44eGDNL1/UVfta6zTJ9DMRXMNe6Ao6Wm', '__VIEWSTATE': '/wEPDwUJMTg2MzE1NTYyD2QWAgIBD2QWAgIGDw8WAh4EVGV4dAVQ5a2m55Sf5Yid5aeL5a+G56CB5Li66Lqr5Lu96K+B5Y+35ZCO5YWt5L2N44CC5a+G56CB6ZW/5bqm5LiN6LaF6L+HMTDkuKrlrZfnrKbjgIJkZGTItFe6UDnNqdE2sz592HXKwZ7Fhw==', 'BtnLogin':'登录'}
+	payload = {
+		'TxtStudentId': stuID,
+		'TxtPassword': stuPW,
+		'__EVENTVALIDATION': eventvalidation,
+		'__VIEWSTATE': viewstate,
+		'BtnLogin':'登录'}
 	r = requests.post(url_ggcx_login, data=payload)
 	text = r.text.encode("utf8")
 	if validateLogin(text) :
