@@ -1,19 +1,17 @@
+#!/usr/bin/python2
 # coding:utf8
+''' 教务处登录 '''
+''' http://jwc.ecust.edu.cn '''
 import requests
-import mechanize
 from lxml import etree
 import cookielib
 
-# stuID = 10142045
+# stuID = 10142045 #作者学号23333
 # stuPW = 10142045
 def Login(stuID, stuPW):
-	# 第一种方法
+	# 第一种方法，[第二种方法已被废弃]
 	x = primaryMethod(stuID, stuPW)
 	if x:
-		return x  
-		pass
-	else : 
-		x = standbyMethod(stuID, stuPW)
 		return x
 		pass
 	pass
@@ -38,26 +36,6 @@ def primaryMethod(stuID, stuPW):
 	text = r.text.encode("utf8")
 	if validateLogin(text) :
 		return r.cookies
-	else :
-		return False
-	pass
-
-def standbyMethod(stuID, stuPW):
-	br = mechanize.Browser()
-	cookiejar = cookielib.CookieJar()
-	br.set_cookiejar(cookiejar)  
-	br.set_handle_equiv(True)  
-	br.set_handle_redirect(True)  
-	br.set_handle_referer(True)  
-	br.set_handle_robots(False)  
-	br.open("http://202.120.108.14/ecustedu/K_StudentQuery/K_StudentQueryLogin.aspx")
-	br.select_form(name="Form1")
-	br["TxtStudentId"] = '10142045'
-	br["TxtPassword"] = '10142045'
-	response = br.submit()
-	text = response.read()
-	if validateLogin(text) :
-		return cookiejar
 	else :
 		return False
 	pass

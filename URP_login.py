@@ -1,6 +1,9 @@
+#!/usr/bin/python2
 # coding:utf8
-# from PIL import Image as Img
-import requests 
+
+''' 信息门户登录 '''
+''' http://urp.ecust.edu.cn '''
+import requests
 # from lxml import etree
 
 # print "test"

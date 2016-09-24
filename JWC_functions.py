@@ -1,3 +1,4 @@
+#!/usr/bin/python2
 # coding:utf8
 import JWC_login
 import requests

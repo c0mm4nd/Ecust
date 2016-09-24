@@ -1,3 +1,4 @@
+#!/usr/bin/python2
 # coding: utf8
 ''' CLI Version '''
 import sys
@@ -58,6 +59,5 @@ if __name__ == '__main__':
 			stuID = value
 		if name in ("-p", "--password"):
 			stuPW = value
-	main(loginID, funcID, stuID, stuPW)	
+	main(loginID, funcID, stuID, stuPW)
 	pass
-
