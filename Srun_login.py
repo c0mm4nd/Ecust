@@ -8,10 +8,8 @@ from lxml import etree
 def Login(stuID, stuPW):
     # valid
     if "http-equiv='refresh'" in requests.get("http://www.baidu.com").text :
-        print "not login"
         pass
     else:
-        print "loginned"
         exit()
     req = requests.Session()
     firstReq = req.get('http://login.ecust.edu.cn')
@@ -23,7 +21,6 @@ def Login(stuID, stuPW):
     location = re.compile('http://[0-9]*.[0-9]*.[0-9]*.[0-9]*/').findall(secondReq.url)[0]
     thirdUrl =location + "ac_detect.php?" + "ac_id="+ acId + "&" + args
     thirdReq = req.get(thirdUrl)
-    # print thirdReq.text
     finalUrl = thirdReq.url
     html = etree.HTML(thirdReq.text)
     stuID = 10142045
@@ -40,9 +37,8 @@ def Login(stuID, stuPW):
     data["username"] = str(stuID) + "@free" #学号
     data["password"] = stuPW
     data["ajax"] = "1"
-    print data
-    # postTo = html.xpath("//form[@name='form2']")[0].attrib['action']
     finalReq = req.post(finalUrl, data=data)
-    print finalReq.text
-
-Login("10142045","951120")
+    if "login_ok" in finalReq.text:
+        return req.cookies #虽然我也不知道这个Cookie有啥用
+    else:
+        return False
