@@ -1,0 +1,3 @@
+[console_scripts]
+Ecust_cli = Ecust_cli:main
+

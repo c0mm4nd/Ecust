@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # coding: utf8
 ''' CLI Version , Please DO NOT import this file ! '''
 
@@ -6,7 +6,7 @@ def JWCInterface():
     # firstly login
     import JWC_login as login
     import JWC_functions as function
-    if os.path.exists("JWC.conf"):
+    if (os.path.exists("JWC.conf")):
         # getConf()
         print "getconf"
         conf = open("JWC.conf","r").readlines()
@@ -52,7 +52,7 @@ def URPInterface():
     # firstly login
     import URP_login as login
     import URP_functions as function
-    if os.path.exists("URP.conf"):
+    if os.path.exists("URP.conf") :
         # getConf()
         print "getconf"
         conf = open("URP.conf","r").readlines()
@@ -84,8 +84,9 @@ def selectURPFunctions(cookie):
         3.？？？
         T.Mini Tools
     '''
+    pass 
 
-if __name__ == '__main__':
+def main():
     import sys
     import os
 
@@ -97,6 +98,10 @@ if __name__ == '__main__':
         URPInterface()
     else :
         print("错误的平台代码！")
+
+
+if __name__ == '__main__':
+    main()
 
     # try:
     #   options,args = getopt.getopt(sys.argv[1:],"l:f:i:p:",["login=", "function=", "id=", "password="])
