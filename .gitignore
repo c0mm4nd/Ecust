@@ -1,2 +1,5 @@
 *.pyc
 __pycache__
+JWCConf
+URPConf
+.vscode
