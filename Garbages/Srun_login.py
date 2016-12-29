@@ -1,10 +1,13 @@
 #!/usr/bin/python2
 # coding:utf8
 ''' 校园网登录 '''
-''' http://login.ecust.edu.cn '''
-import requests
+''' http://login.Ecust.edu.cn '''
 import re
+
+import requests
 from lxml import etree
+
+
 def Login(stuID, stuPW):
     # valid
     if "http-equiv='refresh'" in requests.get("http://www.baidu.com").text :
@@ -12,12 +15,12 @@ def Login(stuID, stuPW):
     else:
         exit()
     req = requests.Session()
-    firstReq = req.get('http://login.ecust.edu.cn')
-    secondUrl = re.compile('http://login.ecust.edu.cn/&arubalp=.*\'').findall(firstReq.text)[0][:-1]
+    firstReq = req.get('http://login.Ecust.edu.cn')
+    secondUrl = re.compile('http://login.Ecust.edu.cn/&arubalp=.*\'').findall(firstReq.text)[0][:-1]
     secondReq = req.get(secondUrl)
     acId = re.compile("/index_([\d]+).html").findall(secondReq.url)[0]
-    print secondReq.url
-    args = re.compile('cmd=login.*&url=http%3A%2F%2Flogin.ecust.edu.cn%2F').findall(secondReq.url)[0]
+    # print(secondReq.url)
+    args = re.compile('cmd=login.*&url=http%3A%2F%2Flogin.Ecust.edu.cn%2F').findall(secondReq.url)[0]
     location = re.compile('http://[0-9]*.[0-9]*.[0-9]*.[0-9]*/').findall(secondReq.url)[0]
     thirdUrl =location + "ac_detect.php?" + "ac_id="+ acId + "&" + args
     thirdReq = req.get(thirdUrl)

@@ -1,7 +1,10 @@
 Ecust.py
 Ecust_cli.py
-README.rst
+jwc_functions.py
+jwc_login.py
 setup.py
+urp_functions.py
+urp_login.py
 Ecust.egg-info/PKG-INFO
 Ecust.egg-info/SOURCES.txt
 Ecust.egg-info/dependency_links.txt

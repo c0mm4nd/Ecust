@@ -2,11 +2,11 @@
 
 class Ecust(object):
 	"""import ME """
-	def __init__(self, arg):
-		super(Ecust, self).__init__()
-		self.arg = arg
+	# def __init__(self, platformID = ):
+	# 	super(Ecust, self).__init__()
+	# 	self.platformID = platformID
 
-	def Ecust(platformID, stuID, stuPW):
+	def __init__(self, platformID, stuID, stuPW):
 		'''
 		Login Module for the import action 
 		Args:
