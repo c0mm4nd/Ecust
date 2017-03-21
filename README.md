@@ -2,6 +2,8 @@
 Ecust （Unofficial Api）
 =====
 
+通过子域名爆破意外找到了官方的(API)[http://open.ecust.edu.cn/developer/v2/index]，还没用过。
+
 华理的小朋友看过来啦~做华理专属APP必备！——华理（本科生）模拟登陆源码~~（PHP）~~ (Python)
 
 ~~本人网站：cmd.ecustcic.com~~
